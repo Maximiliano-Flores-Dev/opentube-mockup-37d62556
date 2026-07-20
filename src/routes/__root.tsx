@@ -77,17 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "OpenTube1 — Video soberano y privado" },
+      { title: "OpenTube — Video soberano y privado" },
       { name: "description", content: "OpenTube es una plataforma de video descentralizada, sin telemetría corporativa y con control real de tu identidad y privacidad." },
       { name: "author", content: "OpenTube" },
-      { property: "og:title", content: "OpenTube1 — Video soberano y privado" },
+      { property: "og:title", content: "OpenTube — Video soberano y privado" },
       { property: "og:description", content: "OpenTube es una plataforma de video descentralizada, sin telemetría corporativa y con control real de tu identidad y privacidad." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "OpenTube1 — Video soberano y privado" },
+      { name: "twitter:title", content: "OpenTube — Video soberano y privado" },
       { name: "twitter:description", content: "OpenTube es una plataforma de video descentralizada, sin telemetría corporativa y con control real de tu identidad y privacidad." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e124a1d8-3188-492c-aac3-79e910baa8b5/id-preview-1ea7200c--34205678-5dc6-4f22-b83c-c0818c64f322.lovable.app-1784568525340.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e124a1d8-3188-492c-aac3-79e910baa8b5/id-preview-1ea7200c--34205678-5dc6-4f22-b83c-c0818c64f322.lovable.app-1784568525340.png" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/qeJCYpPI11QGb54fSWf2Eznh6wk1/social-images/social-1784580847560-1000014187.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/qeJCYpPI11QGb54fSWf2Eznh6wk1/social-images/social-1784580847560-1000014187.webp" },
     ],
     links: [
       {
