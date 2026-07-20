@@ -86,8 +86,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "OpenTube — Video soberano y privado" },
       { name: "twitter:description", content: "OpenTube es una plataforma de video descentralizada, sin telemetría corporativa y con control real de tu identidad y privacidad." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/qeJCYpPI11QGb54fSWf2Eznh6wk1/social-images/social-1784580847560-1000014187.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/qeJCYpPI11QGb54fSWf2Eznh6wk1/social-images/social-1784580847560-1000014187.webp" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/qeJCYpPI11QGb54fSWf2Eznh6wk1/social-images/social-1784581015719-1000014187.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/qeJCYpPI11QGb54fSWf2Eznh6wk1/social-images/social-1784581015719-1000014187.webp" },
     ],
     links: [
       {
