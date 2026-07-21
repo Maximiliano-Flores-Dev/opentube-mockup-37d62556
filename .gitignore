@@ -1,32 +1,109 @@
-# Logs
-logs
+# ==========================================
+# 1. AMBIENTES Y CREDENCIALES (SECURITY FIRST)
+# ==========================================
+# Ignora cualquier .env (.env, .env.local, .env.production, etc.)
+.env*
+# Permite únicamente subir archivos de plantilla sin datos sensibles
+!.env.example
+!.env.template
+*.env.json
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+.dev.vars
+.aws/
+.gcp/
+
+# ==========================================
+# 2. DEPENDENCIAS Y MANIFESTS REGENERABLES
+# ==========================================
+node_modules/
+jspm_packages/
+.pnpm-store/
+.yarn/cache/
+.yarn/unplugged/
+.pnp
+.pnp.js
+
+# ==========================================
+# 3. BUILD OUTPUTS, FRAMEWORKS & BUNDLERS
+# ==========================================
+dist/
+dist-ssr/
+build/
+out/
+.output/
+.vinxi/
+.nitro/
+.next/
+.nuxt/
+.svelte-kit/
+.astro/
+.tanstack/
+.vercel/
+.netlify/
+.wrangler/
+.turbo/
+.parcel-cache/
+.cache/
+
+# ==========================================
+# 4. LOGS Y COBERTURA DE PRUEBAS (TESTING)
+# ==========================================
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+coverage/
+.nyc_output/
+.playwright/
+test-results/
 
-node_modules
-dist
-dist-ssr
-.output
-.vinxi
-.tanstack/**
-.nitro
-*.local
+# ==========================================
+# 5. INTEGRACIÓN MULTILENGUAJE (Python, Rust, C/C++)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+target/
+*.exe
+*.o
+*.a
+*.so
+*.dylib
 
-# Wrangler / Cloudflare
-.wrangler/
-.dev.vars
+# ==========================================
+# 6. CONFIGURACIÓN DE EDITORES Y SISTEMA OPERATIVO
+# ==========================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
 
-# Editor directories and files
+# Windows
+ehthumbs.db
+Thumbs.db
+
+# IDEs & Editores
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+.idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
