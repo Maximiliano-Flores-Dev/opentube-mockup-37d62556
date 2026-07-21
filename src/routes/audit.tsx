@@ -55,7 +55,7 @@ function AuditPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <a
-              href="https://github.com/lovable/OpenTube"
+              href="https://github.com/Maximiliano-Flores-Dev/opentube-mockup-37d62556"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 h-10 px-4 rounded-lg text-sm font-semibold text-black"
