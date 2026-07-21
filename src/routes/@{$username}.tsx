@@ -103,7 +103,7 @@ function ChannelPage() {
     profile?.channelInitials ||
     username
       .split(/\s+/)
-      .map((w) => w[0])
+      .map((w: string) => w[0])
       .filter(Boolean)
       .join("")
       .slice(0, 2)
