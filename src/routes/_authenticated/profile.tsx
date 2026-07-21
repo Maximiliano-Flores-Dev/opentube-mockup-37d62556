@@ -11,7 +11,7 @@ import {
 } from "@/lib/profile.functions";
 import { PrivacyPanel } from "@/components/PrivacyPanel";
 import { supabase } from "@/integrations/supabase/client";
-import { clearEntered } from "@/lib/saved-accounts";
+import { clearEntered, loadAccounts, upsertAccount } from "@/lib/saved-accounts";
 
 export const Route = createFileRoute("/_authenticated/profile")({
   component: ProfilePage,
