@@ -67,11 +67,49 @@ function ProfilePage() {
     setDontCountViews(p.privacyDontCountViews);
   }, [profileQ.data]);
 
+  async function refreshEverywhere(previousChannelName?: string) {
+    // Server-fresh profile (includes signed avatar URL, initials, etc.).
+    const fresh = await getProfileFn().catch(() => null);
+
+    // Prime react-query caches so UserMenu, home feed, and channel pages
+    // reflect the change without a manual reload.
+    if (fresh) {
+      qc.setQueryData(["my-profile-editor"], fresh);
+      qc.setQueryData(["my-profile", fresh.id], fresh);
+      qc.setQueryData(["profile", "channel", fresh.channelName], fresh);
+    }
+    // Invalidate anything else keyed by profile/channel (subs count, saved
+    // videos, previous channel name after a rename, etc.).
+    qc.invalidateQueries({ queryKey: ["my-profile"] });
+    qc.invalidateQueries({ queryKey: ["my-profile-editor"] });
+    qc.invalidateQueries({ queryKey: ["profile"] });
+    if (previousChannelName && previousChannelName !== fresh?.channelName) {
+      qc.invalidateQueries({ queryKey: ["profile", "channel", previousChannelName] });
+    }
+
+    // Keep the on-device account roster (ProfileGate / account switcher) in sync.
+    if (fresh) {
+      const existing = loadAccounts().find((a) => a.userId === fresh.id);
+      if (existing) {
+        upsertAccount({
+          ...existing,
+          displayName: fresh.displayName,
+          channelName: fresh.channelName,
+          channelInitials: fresh.channelInitials,
+          channelColor: fresh.channelColor,
+          avatarUrl: fresh.avatarUrl,
+          lastUsed: Date.now(),
+        });
+      }
+    }
+  }
+
   async function save(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
     setError(null);
     setMessage(null);
+    const previousChannel = profileQ.data?.channelName;
     try {
       await updateFn({
         data: {
@@ -83,9 +121,8 @@ function ProfilePage() {
           privacyDontCountViews: dontCountViews,
         },
       });
+      await refreshEverywhere(previousChannel);
       setMessage("Perfil actualizado.");
-      qc.invalidateQueries({ queryKey: ["my-profile"] });
-      qc.invalidateQueries({ queryKey: ["my-profile-editor"] });
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -108,9 +145,8 @@ function ProfilePage() {
       });
       if (!put.ok) throw new Error("No se pudo subir el avatar.");
       await setPathFn({ data: { path } });
+      await refreshEverywhere();
       setMessage("Avatar actualizado.");
-      qc.invalidateQueries({ queryKey: ["my-profile"] });
-      qc.invalidateQueries({ queryKey: ["my-profile-editor"] });
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
